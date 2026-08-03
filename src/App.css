@@ -1,3 +1,242 @@
+.app {
+  min-height: 100vh;
+}
+
+/* Верхнее меню */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+  backdrop-filter: blur(12px);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+
+  max-width: 1200px;
+  min-height: 72px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
+  color: #1d4ed8;
+  font-size: 22px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link {
+  padding: 10px 13px;
+  border-radius: 9px;
+  color: #4b5563;
+  font-size: 15px;
+  font-weight: 600;
+
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.nav-link:hover {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.nav-link.active {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* Главный экран */
+
+.hero {
+  padding: 90px 20px;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: #ffffff;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0 0 20px;
+  font-size: 52px;
+}
+
+.hero p {
+  max-width: 720px;
+  margin: 0 auto 35px;
+  font-size: 21px;
+  line-height: 1.6;
+}
+
+.hero button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 15px 27px;
+  border: 0;
+  border-radius: 12px;
+
+  background: #ffffff;
+  color: #2563eb;
+
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.hero button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+/* Карточки главной страницы */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.card {
+  padding: 30px;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
+
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+
+.card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.12);
+}
+
+.icon {
+  margin-bottom: 20px;
+  color: #2563eb;
+  font-size: 42px;
+}
+
+.card h3 {
+  margin: 0 0 14px;
+  font-size: 22px;
+}
+
+.card p {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.65;
+}
+
+/* Простые страницы разделов */
+
+.content-page {
+  max-width: 1000px;
+  min-height: 400px;
+  margin: 50px auto;
+  padding: 42px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
+}
+
+.content-page h1 {
+  margin: 0 0 20px;
+  color: #1d4ed8;
+  font-size: 38px;
+}
+
+.content-page p {
+  margin: 0;
+  color: #475569;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* Адаптация */
+
+@media (max-width: 850px) {
+  .header-container {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-menu {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero {
+    padding: 65px 20px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+  .content-page {
+    margin: 30px 20px;
+    padding: 30px 24px;
+  }
+}
+
+@media (max-width: 520px) {
+  .nav-menu {
+    gap: 4px;
+  }
+
+  .nav-link {
+    padding: 8px 9px;
+    font-size: 13px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .cards {
+    margin-top: 35px;
+  }
+
+  .content-page h1 {
+    font-size: 30px;
+  }
+}
+
 /* Страница библиотеки МСФО */
 
 .standards-page {

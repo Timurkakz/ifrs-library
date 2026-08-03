@@ -132,6 +132,26 @@ export const ifrs16Content = {
 
     calculation: {
          label: "Расчёт приведённой стоимости",
+
+         summary: [
+  {
+    label: "Обязательство по аренде",
+    value: 2486852,
+    format: "currency",
+  },
+  {
+    label: "Актив в форме права пользования",
+    value: 2486852,
+    format: "currency",
+  },
+  {
+    label: "Годовая амортизация",
+    value: 828951,
+    format: "currency",
+  },
+],
+
+
       formula:
         "1 000 000 / 1,10 + 1 000 000 / 1,10² + 1 000 000 / 1,10³",
 

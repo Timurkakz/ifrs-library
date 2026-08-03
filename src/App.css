@@ -426,3 +426,454 @@
     font-size: 24px;
   }
 }
+
+/* Метаданные стандарта */
+
+.standard-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.standard-meta span {
+  padding: 8px 12px;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1d4ed8;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Заголовки и списки внутри статьи */
+
+.standard-content-section h3 {
+  margin: 28px 0 14px;
+  color: #334155;
+  font-size: 20px;
+}
+
+.content-list {
+  display: grid;
+  gap: 11px;
+  margin: 18px 0 0;
+  padding-left: 22px;
+  color: #475569;
+  line-height: 1.65;
+}
+
+.content-list li::marker {
+  color: #2563eb;
+}
+
+/* Информационные карточки */
+
+.information-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.information-card {
+  padding: 22px;
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+  background: #f8fbff;
+}
+
+.information-card h3 {
+  margin: 0 0 10px;
+  color: #1e3a8a;
+  font-size: 18px;
+}
+
+.information-card p {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.65;
+}
+
+/* Предупреждение */
+
+.warning-box {
+  margin-top: 22px;
+  padding: 18px 20px;
+  border-left: 5px solid #f59e0b;
+  border-radius: 10px;
+  background: #fffbeb;
+}
+
+.warning-box strong {
+  color: #92400e;
+}
+
+.warning-box p {
+  margin: 7px 0 0;
+  color: #78350f;
+  line-height: 1.6;
+}
+
+/* Пошаговый алгоритм */
+
+.application-steps {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.application-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #f8fafc;
+}
+
+.application-step > span {
+  display: flex;
+  flex: 0 0 42px;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #ffffff;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.application-step h3 {
+  margin: 0 0 7px;
+  color: #1e293b;
+  font-size: 18px;
+}
+
+.application-step p {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* Формула */
+
+.formula-box {
+  display: grid;
+  gap: 10px;
+  margin: 25px 0;
+  padding: 22px;
+  border: 1px solid #bfdbfe;
+  border-radius: 14px;
+  background: #eff6ff;
+}
+
+.formula-box span {
+  color: #475569;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.formula-box strong {
+  color: #1e3a8a;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* Итоги расчёта */
+
+.calculation-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  margin: 24px 0;
+}
+
+.calculation-summary article {
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.calculation-summary span {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.calculation-summary strong {
+  color: #1d4ed8;
+  font-size: 20px;
+}
+
+/* Таблица расчёта */
+
+.table-wrapper {
+  width: 100%;
+  margin-top: 25px;
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+}
+
+.schedule-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.schedule-table th,
+.schedule-table td {
+  padding: 15px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.schedule-table th:first-child,
+.schedule-table td:first-child {
+  text-align: center;
+}
+
+.schedule-table th {
+  background: #eff6ff;
+  color: #1e3a8a;
+  font-size: 14px;
+}
+
+.schedule-table td {
+  color: #475569;
+  font-size: 14px;
+}
+
+.schedule-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.schedule-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.content-note {
+  margin-top: 14px !important;
+  color: #64748b !important;
+  font-size: 14px !important;
+  font-style: italic;
+}
+
+/* Проводки */
+
+.journal-entries {
+  display: grid;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.journal-entry {
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
+  background: #f8fafc;
+}
+
+.journal-entry h3 {
+  margin: 0 0 18px;
+  color: #1e3a8a;
+  font-size: 19px;
+}
+
+.journal-entry-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 15px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.journal-entry-row span {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.journal-entry-row strong {
+  color: #334155;
+}
+
+.journal-entry > p {
+  margin: 18px 0 0;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* Ошибки и чек-лист */
+
+.mistake-list li::marker {
+  color: #dc2626;
+}
+
+.checklist {
+  display: grid;
+  gap: 12px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.checklist li {
+  position: relative;
+  padding: 14px 16px 14px 48px;
+  border: 1px solid #d1fae5;
+  border-radius: 11px;
+  background: #f0fdf4;
+  color: #166534;
+  line-height: 1.55;
+}
+
+.checklist li::before {
+  position: absolute;
+  top: 13px;
+  left: 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #22c55e;
+  color: #ffffff;
+
+  content: "✓";
+  font-size: 13px;
+  font-weight: 800;
+}
+
+/* Источники */
+
+.sources-list {
+  display: grid;
+  gap: 17px;
+  margin-top: 24px;
+}
+
+.source-card {
+  padding: 22px;
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+  background: #f8fbff;
+}
+
+.source-card > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 13px;
+}
+
+.source-card > div span {
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.source-card h3 {
+  margin: 0 0 8px;
+  color: #1e293b;
+  font-size: 19px;
+}
+
+.source-card p {
+  margin: 0 0 16px;
+  color: #64748b;
+}
+
+.source-card a {
+  display: inline-flex;
+  color: #2563eb;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.source-card a:hover {
+  text-decoration: underline;
+}
+
+/* Предупреждение об использовании материала */
+
+.disclaimer-box {
+  margin-top: 25px;
+  padding: 20px;
+  border: 1px solid #fde68a;
+  border-radius: 13px;
+  background: #fffbeb;
+}
+
+.disclaimer-box strong {
+  color: #92400e;
+}
+
+.disclaimer-box p {
+  margin: 8px 0 0;
+  color: #78350f;
+  line-height: 1.65;
+}
+
+/* Адаптация практической статьи */
+
+@media (max-width: 850px) {
+  .calculation-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .information-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .standard-meta {
+    display: grid;
+  }
+
+  .standard-meta span {
+    border-radius: 10px;
+  }
+
+  .application-step {
+    gap: 13px;
+    padding: 17px;
+  }
+
+  .application-step > span {
+    flex-basis: 36px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .journal-entry {
+    padding: 20px 17px;
+  }
+
+  .journal-entry-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .formula-box strong {
+    font-size: 16px;
+    overflow-wrap: anywhere;
+  }
+}

@@ -1,236 +1,428 @@
-.app {
-  min-height: 100vh;
-}
+/* Страница библиотеки МСФО */
 
-/* Верхнее меню */
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0.96);
-  border-bottom: 1px solid #e5e7eb;
-  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
-  backdrop-filter: blur(12px);
-}
-
-.header-container {
+.standards-page {
+  width: 100%;
   max-width: 1200px;
-  min-height: 72px;
   margin: 0 auto;
-  padding: 0 20px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
+  padding: 55px 20px 80px;
 }
 
-.logo {
-  color: #1d4ed8;
-  font-size: 22px;
+.standards-heading {
+  max-width: 820px;
+  margin-bottom: 35px;
+}
+
+.page-label {
+  margin: 0 0 10px;
+  color: #2563eb;
+  font-size: 14px;
   font-weight: 800;
-  white-space: nowrap;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.nav-menu {
+.standards-heading h1 {
+  margin: 0 0 16px;
+  color: #172554;
+  font-size: 44px;
+  line-height: 1.15;
+}
+
+.standards-heading > p:last-child {
+  margin: 0;
+  color: #64748b;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* Поиск */
+
+.standards-search {
+  margin-bottom: 35px;
+  padding: 25px;
+  border: 1px solid #dbeafe;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+}
+
+.standards-search label {
+  display: block;
+  margin-bottom: 10px;
+  color: #1e293b;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.search-field {
   display: flex;
   align-items: center;
-  gap: 8px;
-}
+  gap: 12px;
 
-.nav-link {
-  padding: 10px 13px;
-  border-radius: 9px;
-  color: #4b5563;
-  font-size: 15px;
-  font-weight: 600;
-  transition:
-    background-color 0.2s,
-    color 0.2s;
-}
-
-.nav-link:hover {
-  background: #eff6ff;
-  color: #2563eb;
-}
-
-.nav-link.active {
-  background: #2563eb;
-  color: white;
-}
-
-/* Главный экран */
-
-.hero {
-  padding: 90px 20px;
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
-  color: white;
-  text-align: center;
-}
-
-.hero h1 {
-  margin: 0 0 20px;
-  font-size: 52px;
-}
-
-.hero p {
-  max-width: 720px;
-  margin: 0 auto 35px;
-  font-size: 21px;
-  line-height: 1.6;
-}
-
-.hero button {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-
-  padding: 15px 27px;
-  border: 0;
+  padding: 0 16px;
+  border: 2px solid #dbeafe;
   border-radius: 12px;
-  background: white;
-  color: #2563eb;
-
-  font-size: 17px;
-  font-weight: 700;
-  cursor: pointer;
+  background: #f8fafc;
 
   transition:
-    transform 0.2s,
-    box-shadow 0.2s;
+    border-color 0.2s,
+    box-shadow 0.2s,
+    background-color 0.2s;
 }
 
-.hero button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+.search-field:focus-within {
+  border-color: #2563eb;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
 }
 
-/* Карточки */
+.search-field svg {
+  flex-shrink: 0;
+  color: #2563eb;
+  font-size: 18px;
+}
 
-.cards {
+.search-field input {
+  width: 100%;
+  padding: 15px 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #1e293b;
+  font-size: 16px;
+}
+
+.search-field input::placeholder {
+  color: #94a3b8;
+}
+
+.search-result-count {
+  margin: 12px 0 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Карточки стандартов */
+
+.standards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 24px;
-
-  max-width: 1200px;
-  margin: 60px auto;
-  padding: 0 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
 }
 
-.card {
-  padding: 30px;
-  border: 1px solid #e5e7eb;
+.standard-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  padding: 26px;
+
+  border: 1px solid #e2e8f0;
   border-radius: 18px;
-  background: white;
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
 
   transition:
     transform 0.25s,
+    border-color 0.25s,
     box-shadow 0.25s;
 }
 
-.card:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.12);
+.standard-card:hover {
+  transform: translateY(-6px);
+  border-color: #bfdbfe;
+  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.11);
 }
 
-.icon {
-  margin-bottom: 20px;
-  color: #2563eb;
-  font-size: 42px;
+.standard-code {
+  align-self: flex-start;
+  margin-bottom: 18px;
+  padding: 7px 11px;
+  border-radius: 8px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 14px;
+  font-weight: 800;
 }
 
-.card h3 {
+.standard-card h2 {
   margin: 0 0 14px;
-  font-size: 22px;
+  color: #1e293b;
+  font-size: 21px;
+  line-height: 1.35;
 }
 
-.card p {
-  margin: 0;
+.standard-card p {
+  margin: 0 0 24px;
   color: #64748b;
   line-height: 1.65;
 }
 
-/* Страницы разделов */
+.standard-button {
+  display: block;
+  margin-top: auto;
+  padding: 11px 16px;
 
-.content-page {
-  max-width: 1000px;
-  min-height: 400px;
-  margin: 50px auto;
-  padding: 42px;
+  border: 1px solid #2563eb;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #2563eb;
 
-  border: 1px solid #e5e7eb;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+
+.standard-button:hover {
+  transform: translateY(-2px);
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.standard-button:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.3);
+  outline-offset: 3px;
+}
+
+/* Пустой результат поиска */
+
+.empty-search-result {
+  padding: 45px 25px;
+  border: 1px dashed #93c5fd;
   border-radius: 18px;
-  background: white;
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
+  background: #eff6ff;
+  text-align: center;
 }
 
-.content-page h1 {
-  margin: 0 0 20px;
-  color: #1d4ed8;
-  font-size: 38px;
+.empty-search-result h2 {
+  margin: 0 0 10px;
+  color: #1e3a8a;
 }
 
-.content-page p {
+.empty-search-result p {
+  margin: 0;
+  color: #64748b;
+}
+
+/* Адаптация библиотеки */
+
+@media (max-width: 950px) {
+  .standards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .standards-page {
+    padding-top: 35px;
+  }
+
+  .standards-heading h1 {
+    font-size: 36px;
+  }
+
+  .standards-heading > p:last-child {
+    font-size: 16px;
+  }
+
+  .standards-search {
+    padding: 18px;
+  }
+
+  .standards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .standard-card {
+    min-height: auto;
+  }
+}
+
+/* Страница отдельного стандарта */
+
+.standard-details-page {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 45px 20px 80px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 24px;
+  color: #2563eb;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.standard-details-header {
+  margin-bottom: 26px;
+  padding: 40px;
+
+  border: 1px solid #dbeafe;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.07);
+}
+
+.standard-details-header h1 {
+  max-width: 900px;
+  margin: 16px 0;
+  color: #172554;
+  font-size: 42px;
+  line-height: 1.2;
+}
+
+.standard-details-header > p {
+  max-width: 850px;
   margin: 0;
   color: #475569;
   font-size: 18px;
   line-height: 1.7;
 }
 
-/* Адаптация под телефон */
+/* Навигация внутри стандарта */
+
+.standard-section-nav {
+  position: sticky;
+  top: 88px;
+  z-index: 50;
+
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  padding: 12px;
+
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.07);
+  backdrop-filter: blur(10px);
+}
+
+.standard-section-nav a {
+  flex-shrink: 0;
+  padding: 9px 13px;
+  border-radius: 8px;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.standard-section-nav a:hover {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+/* Содержание стандарта */
+
+.standard-content {
+  display: grid;
+  gap: 22px;
+}
+
+.standard-content-section {
+  scroll-margin-top: 165px;
+  padding: 32px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+.standard-content-section h2 {
+  margin: 0 0 14px;
+  color: #1e293b;
+  font-size: 28px;
+}
+
+.standard-content-section > p:last-child {
+  margin: 0;
+  color: #64748b;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+/* Стандарт не найден */
+
+.standard-not-found {
+  padding: 45px;
+  border: 1px solid #fecaca;
+  border-radius: 18px;
+  background: #fff7f7;
+  text-align: center;
+}
+
+.standard-not-found h1 {
+  margin: 0 0 14px;
+  color: #991b1b;
+}
+
+.standard-not-found p {
+  margin: 0 0 24px;
+  color: #64748b;
+}
+
+/* Адаптация страницы стандарта */
 
 @media (max-width: 850px) {
-  .header-container {
-    padding-top: 14px;
-    padding-bottom: 14px;
-    flex-direction: column;
-    gap: 12px;
+  .standard-section-nav {
+    top: 130px;
   }
 
-  .nav-menu {
-    justify-content: center;
-    flex-wrap: wrap;
+  .standard-details-header {
+    padding: 30px 25px;
   }
 
-  .hero {
-    padding: 65px 20px;
+  .standard-details-header h1 {
+    font-size: 34px;
   }
 
-  .hero h1 {
-    font-size: 40px;
-  }
-
-  .hero p {
-    font-size: 18px;
-  }
-
-  .content-page {
-    margin: 30px 20px;
-    padding: 30px 24px;
+  .standard-content-section {
+    scroll-margin-top: 205px;
   }
 }
 
 @media (max-width: 520px) {
-  .nav-menu {
-    gap: 4px;
+  .standard-details-page {
+    padding-top: 30px;
   }
 
-  .nav-link {
-    padding: 8px 9px;
-    font-size: 13px;
+  .standard-details-header {
+    padding: 25px 20px;
   }
 
-  .hero h1 {
-    font-size: 34px;
+  .standard-details-header h1 {
+    font-size: 29px;
   }
 
-  .cards {
-    margin-top: 35px;
+  .standard-details-header > p {
+    font-size: 16px;
   }
 
-  .content-page h1 {
-    font-size: 30px;
+  .standard-section-nav {
+    top: 170px;
+  }
+
+  .standard-content-section {
+    padding: 25px 20px;
+    scroll-margin-top: 245px;
+  }
+
+  .standard-content-section h2 {
+    font-size: 24px;
   }
 }

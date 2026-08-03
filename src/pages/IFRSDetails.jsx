@@ -1,11 +1,14 @@
 import { Link, useParams } from "react-router";
 
+import Checklist from "../components/standards/Checklist.jsx";
+import JournalEntries from "../components/standards/JournalEntries.jsx";
+import ScheduleTable from "../components/standards/ScheduleTable.jsx";
+import SourcesList from "../components/standards/SourcesList.jsx";
+import { formatCurrency } from "../utils/formatCurrency.js";
 import { ifrsStandards } from "../data/ifrsStandards.js";
 import { ifrs16Content } from "../content/ifrs/ifrs16.js";
 
-function formatCurrency(value, currency = "тенге") {
-  return `${new Intl.NumberFormat("ru-RU").format(value)} ${currency}`;
-}
+
 
 function IFRSDetails() {
   const { standardId } = useParams();
@@ -175,31 +178,10 @@ function IFRSDetails() {
 
             <p>{content.practicalExample.calculation.explanation}</p>
 
-            <div className="table-wrapper">
-              <table className="schedule-table">
-                <thead>
-                  <tr>
-                    <th>Год</th>
-                    <th>Начальный остаток</th>
-                    <th>Проценты</th>
-                    <th>Платёж</th>
-                    <th>Конечный остаток</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {content.practicalExample.schedule.map((row) => (
-                    <tr key={row.year}>
-                      <td>{row.year}</td>
-                      <td>{formatCurrency(row.openingLiability)}</td>
-                      <td>{formatCurrency(row.interestExpense)}</td>
-                      <td>{formatCurrency(row.payment)}</td>
-                      <td>{formatCurrency(row.closingLiability)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+<ScheduleTable
+  schedule={content.practicalExample.schedule}
+  currency={content.practicalExample.currency}
+/>
 
             <p className="content-note">
               {content.practicalExample.note}
@@ -210,33 +192,10 @@ function IFRSDetails() {
             <p className="page-label">Бухгалтерский учёт</p>
             <h2>Примеры проводок</h2>
 
-            <div className="journal-entries">
-              {content.journalEntries.map((entry) => (
-                <article
-                  className="journal-entry"
-                  key={`${entry.moment}-${entry.debit}`}
-                >
-                  <h3>{entry.moment}</h3>
-
-                  <div className="journal-entry-row">
-                    <span>Дебет</span>
-                    <strong>{entry.debit}</strong>
-                  </div>
-
-                  <div className="journal-entry-row">
-                    <span>Кредит</span>
-                    <strong>{entry.credit}</strong>
-                  </div>
-
-                  <div className="journal-entry-row">
-                    <span>Сумма</span>
-                    <strong>{formatCurrency(entry.amount)}</strong>
-                  </div>
-
-                  <p>{entry.explanation}</p>
-                </article>
-              ))}
-            </div>
+           <JournalEntries
+  entries={content.journalEntries}
+  currency={content.practicalExample.currency}
+/>
           </section>
 
           <section className="standard-content-section">
@@ -268,41 +227,14 @@ function IFRSDetails() {
 
             <h3>Практический чек-лист</h3>
 
-            <ul className="checklist">
-              {content.practicalChecklist.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </section>
+           <Checklist items={content.practicalChecklist} />
+</section>
 
           <section id="sources" className="standard-content-section">
             <p className="page-label">Исследование</p>
             <h2>Источники и литература</h2>
 
-            <div className="sources-list">
-              {content.sources.map((source) => (
-                <article
-                  className="source-card"
-                  key={`${source.organization}-${source.title}`}
-                >
-                  <div>
-                    <span>{source.language}</span>
-                    <span>{source.type}</span>
-                  </div>
-
-                  <h3>{source.title}</h3>
-                  <p>{source.organization}</p>
-
-                  <a
-                    href={source.url}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Открыть источник ↗
-                  </a>
-                </article>
-              ))}
-            </div>
+            <SourcesList sources={content.sources} />
 
             <div className="disclaimer-box">
               <strong>Важно</strong>

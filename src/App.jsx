@@ -1,33 +1,26 @@
+import { Route, Routes } from "react-router";
+
+import Header from "./components/Header.jsx";
+import Home from "./pages/Home.jsx";
+import IFRS from "./pages/IFRS.jsx";
+import IAS from "./pages/IAS.jsx";
+import IFRIC from "./pages/IFRIC.jsx";
+import Laws from "./pages/Laws.jsx";
+
+import "./App.css";
+
 function App() {
   return (
-    <div
-      style={{
-        maxWidth: "900px",
-        margin: "50px auto",
-        padding: "20px",
-        fontFamily: "Arial, sans-serif",
-      }}
-    >
-      <h1>📚 Библиотека МСФО</h1>
+    <div className="app">
+      <Header />
 
-      <h2>Добро пожаловать!</h2>
-
-      <p>
-        Это мой первый проект на React.
-      </p>
-
-      <hr />
-
-      <h3>Что здесь будет:</h3>
-
-      <ul>
-        <li>📘 Стандарты МСФО</li>
-        <li>📗 МСБУ (IAS)</li>
-        <li>📙 IFRIC и SIC</li>
-        <li>⚖ Законодательство Казахстана</li>
-        <li>🔍 Умный поиск</li>
-        <li>🤖 ИИ-помощник</li>
-      </ul>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/ifrs" element={<IFRS />} />
+        <Route path="/ias" element={<IAS />} />
+        <Route path="/ifric" element={<IFRIC />} />
+        <Route path="/laws" element={<Laws />} />
+      </Routes>
     </div>
   );
 }

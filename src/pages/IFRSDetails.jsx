@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router";
 
 import Checklist from "../components/standards/Checklist.jsx";
+import Breadcrumbs from "../components/Breadcrumbs.jsx";
 import JournalEntries from "../components/standards/JournalEntries.jsx";
 import ScheduleTable from "../components/standards/ScheduleTable.jsx";
 import SourcesList from "../components/standards/SourcesList.jsx";
@@ -20,6 +21,8 @@ function IFRSDetails() {
   if (!standard) {
     return (
       <main className="standard-details-page">
+
+       
         <section className="standard-not-found">
           <h1>Стандарт не найден</h1>
 
@@ -39,6 +42,24 @@ function IFRSDetails() {
 
   return (
     <main className="standard-details-page">
+
+<Breadcrumbs
+  items={[
+    {
+      label: "Главная",
+      to: "/",
+    },
+    {
+      label: "МСФО",
+      to: "/ifrs",
+    },
+    {
+      label: standard.code,
+    },
+  ]}
+/>
+
+
       <Link to="/ifrs" className="back-link">
         ← Все стандарты МСФО
       </Link>

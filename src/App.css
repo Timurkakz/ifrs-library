@@ -1549,3 +1549,64 @@
     padding-top: 40px;
   }
 }
+
+/* Навигационная цепочка */
+
+.breadcrumbs {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 24px;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumbs li {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.breadcrumbs li:not(:last-child)::after {
+  color: #94a3b8;
+  content: "›";
+  font-size: 18px;
+}
+
+.breadcrumbs a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.breadcrumbs span[aria-current="page"] {
+  color: #334155;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .breadcrumbs {
+    margin-bottom: 18px;
+  }
+
+  .breadcrumbs li {
+    font-size: 13px;
+  }
+}

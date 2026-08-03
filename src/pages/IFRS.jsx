@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { FaSearch } from "react-icons/fa";
 
+import { ifrsContentById } from "../content/ifrs/index.js";
 import { ifrsStandards } from "../data/ifrsStandards.js";
 
 function IFRS() {
@@ -54,22 +55,38 @@ function IFRS() {
 
       {filteredStandards.length > 0 ? (
         <section className="standards-grid" aria-label="Список стандартов МСФО">
-          {filteredStandards.map((standard) => (
-            <article className="standard-card" key={standard.id}>
-              <span className="standard-code">{standard.code}</span>
+          {filteredStandards.map((standard) => {
+  const hasGuide = Boolean(ifrsContentById[standard.id]);
 
-              <h2>{standard.title}</h2>
+  return (
+    <article className="standard-card" key={standard.id}>
+      <div className="standard-card-top">
+        <span className="standard-code">{standard.code}</span>
 
-              <p>{standard.description}</p>
+        <span
+          className={
+            hasGuide
+              ? "material-status material-status-ready"
+              : "material-status material-status-progress"
+          }
+        >
+          {hasGuide ? "Руководство готово" : "Материал готовится"}
+        </span>
+      </div>
 
-             <Link
-  to={`/ifrs/${standard.id}`}
-  className="standard-button"
->
-  Открыть стандарт
-</Link>
-            </article>
-          ))}
+      <h2>{standard.title}</h2>
+
+      <p>{standard.description}</p>
+
+      <Link
+        to={`/ifrs/${standard.id}`}
+        className="standard-button"
+      >
+        {hasGuide ? "Открыть руководство" : "Подробнее"}
+      </Link>
+    </article>
+  );
+})}
         </section>
       ) : (
         <section className="empty-search-result">

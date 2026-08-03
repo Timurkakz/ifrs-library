@@ -1116,3 +1116,43 @@
     overflow-wrap: anywhere;
   }
 }
+
+
+/* Статус готовности материалов */
+
+.standard-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.standard-card-top .standard-code {
+  margin-bottom: 0;
+}
+
+.material-status {
+  padding: 6px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.material-status-ready {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.material-status-progress {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+@media (max-width: 420px) {
+  .standard-card-top {
+    flex-direction: column;
+  }
+}

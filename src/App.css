@@ -1219,3 +1219,148 @@
   font-size: 14px;
   font-weight: 700;
 }
+
+/* Страницы разделов в разработке */
+
+.placeholder-page {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 55px 20px 80px;
+}
+
+.placeholder-hero {
+  padding: 40px;
+  border: 1px solid #dbeafe;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.07);
+}
+
+.placeholder-status {
+  display: inline-block;
+  margin-bottom: 22px;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.placeholder-hero h1 {
+  margin: 0 0 18px;
+  color: #172554;
+  font-size: 42px;
+  line-height: 1.2;
+}
+
+.placeholder-description {
+  max-width: 760px;
+  margin: 0;
+  color: #475569;
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.placeholder-content {
+  margin-top: 24px;
+  padding: 35px 40px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+.placeholder-content h2 {
+  margin: 0 0 22px;
+  color: #1e293b;
+  font-size: 27px;
+}
+
+.placeholder-list {
+  display: grid;
+  gap: 13px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.placeholder-list li {
+  position: relative;
+  padding: 14px 16px 14px 46px;
+  border: 1px solid #e2e8f0;
+  border-radius: 11px;
+  background: #f8fafc;
+  color: #475569;
+  line-height: 1.55;
+}
+
+.placeholder-list li::before {
+  position: absolute;
+  top: 14px;
+  left: 17px;
+  color: #2563eb;
+  content: "✓";
+  font-weight: 800;
+}
+
+.placeholder-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.primary-link-button,
+.secondary-link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.primary-link-button {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.primary-link-button:hover {
+  background: #1d4ed8;
+}
+
+.secondary-link-button {
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
+}
+
+.secondary-link-button:hover {
+  background: #f8fafc;
+}
+
+@media (max-width: 620px) {
+  .placeholder-page {
+    padding-top: 35px;
+  }
+
+  .placeholder-hero,
+  .placeholder-content {
+    padding: 28px 22px;
+  }
+
+  .placeholder-hero h1 {
+    font-size: 32px;
+  }
+
+  .placeholder-description {
+    font-size: 16px;
+  }
+
+  .placeholder-actions {
+    display: grid;
+  }
+}

@@ -39,7 +39,16 @@ function PageMeta() {
   useEffect(() => {
     let pageMeta = pagesMeta[pathname];
 
-    if (pathname === "/ifrs/16") {
+if (pathname === "/ifrs/15") {
+  pageMeta = {
+    title:
+      "IFRS 15 «Выручка по договорам с покупателями» | IFRS Library",
+    description:
+      "Практическое руководство по IFRS 15: пятиэтапная модель, распределение цены сделки, признание выручки и бухгалтерские проводки.",
+  };
+} else if (pathname === "/ifrs/16") {
+
+
       pageMeta = {
         title: "IFRS 16 «Аренда» — расчёты и проводки | IFRS Library",
         description:

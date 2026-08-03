@@ -6,7 +6,7 @@ import ScheduleTable from "../components/standards/ScheduleTable.jsx";
 import SourcesList from "../components/standards/SourcesList.jsx";
 import { formatCurrency } from "../utils/formatCurrency.js";
 import { ifrsStandards } from "../data/ifrsStandards.js";
-import { ifrs16Content } from "../content/ifrs/ifrs16.js";
+import { ifrsContentById } from "../content/ifrs/index.js";
 
 
 
@@ -35,7 +35,7 @@ function IFRSDetails() {
     );
   }
 
-  const content = standard.id === 16 ? ifrs16Content : null;
+  const content = ifrsContentById[standard.id] ?? null;
 
   return (
     <main className="standard-details-page">

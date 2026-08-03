@@ -1,43 +1,72 @@
 import { formatCurrency } from "../../utils/formatCurrency.js";
 
-function ScheduleTable({ schedule, currency = "тенге" }) {
+const defaultColumns = [
+  {
+    key: "year",
+    label: "Год",
+    format: "text",
+  },
+  {
+    key: "openingLiability",
+    label: "Начальный остаток",
+    format: "currency",
+  },
+  {
+    key: "interestExpense",
+    label: "Проценты",
+    format: "currency",
+  },
+  {
+    key: "payment",
+    label: "Платёж",
+    format: "currency",
+  },
+  {
+    key: "closingLiability",
+    label: "Конечный остаток",
+    format: "currency",
+  },
+];
+
+function ScheduleTable({
+  schedule,
+  columns = defaultColumns,
+  currency = "тенге",
+}) {
   if (!Array.isArray(schedule) || schedule.length === 0) {
     return null;
   }
+
+  const tableColumns =
+    Array.isArray(columns) && columns.length > 0
+      ? columns
+      : defaultColumns;
 
   return (
     <div className="table-wrapper">
       <table className="schedule-table">
         <thead>
           <tr>
-            <th>Год</th>
-            <th>Начальный остаток</th>
-            <th>Проценты</th>
-            <th>Платёж</th>
-            <th>Конечный остаток</th>
+            {tableColumns.map((column) => (
+              <th key={column.key}>{column.label}</th>
+            ))}
           </tr>
         </thead>
 
         <tbody>
-          {schedule.map((row) => (
-            <tr key={row.year}>
-              <td>{row.year}</td>
+          {schedule.map((row, rowIndex) => (
+            <tr key={row.id ?? row.year ?? rowIndex}>
+              {tableColumns.map((column) => {
+                const value = row[column.key];
 
-              <td>
-                {formatCurrency(row.openingLiability, currency)}
-              </td>
-
-              <td>
-                {formatCurrency(row.interestExpense, currency)}
-              </td>
-
-              <td>
-                {formatCurrency(row.payment, currency)}
-              </td>
-
-              <td>
-                {formatCurrency(row.closingLiability, currency)}
-              </td>
+                return (
+                  <td key={column.key}>
+                    {column.format === "currency"
+                      ? formatCurrency(value, currency)
+                      : value}
+                  </td>
+                );
+              })}
             </tr>
           ))}
         </tbody>

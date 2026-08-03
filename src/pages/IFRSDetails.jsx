@@ -140,46 +140,58 @@ function IFRSDetails() {
             </ul>
 
             <div className="formula-box">
-              <span>Расчёт приведённой стоимости</span>
+              <span>
+  {content.practicalExample.calculation.label ??
+    "Основной расчёт"}
+</span>
               <strong>{content.practicalExample.calculation.formula}</strong>
             </div>
 
-            <div className="calculation-summary">
-              <article>
-                <span>Обязательство по аренде</span>
-                <strong>
-                  {formatCurrency(
-                    content.practicalExample.calculation
-                      .initialLeaseLiability
-                  )}
-                </strong>
-              </article>
+           <div className="calculation-summary">
+  {(
+    content.practicalExample.summary ?? [
+      {
+        label: "Обязательство по аренде",
+        value:
+          content.practicalExample.calculation
+            .initialLeaseLiability,
+        format: "currency",
+      },
+      {
+        label: "Актив в форме права пользования",
+        value:
+          content.practicalExample.calculation
+            .initialRightOfUseAsset,
+        format: "currency",
+      },
+      {
+        label: "Годовая амортизация",
+        value:
+          content.practicalExample.calculation
+            .annualDepreciation,
+        format: "currency",
+      },
+    ]
+  ).map((item) => (
+    <article key={item.label}>
+      <span>{item.label}</span>
 
-              <article>
-                <span>Актив в форме права пользования</span>
-                <strong>
-                  {formatCurrency(
-                    content.practicalExample.calculation
-                      .initialRightOfUseAsset
-                  )}
-                </strong>
-              </article>
-
-              <article>
-                <span>Годовая амортизация</span>
-                <strong>
-                  {formatCurrency(
-                    content.practicalExample.calculation
-                      .annualDepreciation
-                  )}
-                </strong>
-              </article>
-            </div>
-
+      <strong>
+        {item.format === "currency"
+          ? formatCurrency(
+              item.value,
+              content.practicalExample.currency,
+            )
+          : item.value}
+      </strong>
+    </article>
+  ))}
+</div>
             <p>{content.practicalExample.calculation.explanation}</p>
 
 <ScheduleTable
   schedule={content.practicalExample.schedule}
+  columns={content.practicalExample.scheduleColumns}
   currency={content.practicalExample.currency}
 />
 

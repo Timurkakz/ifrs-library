@@ -131,6 +131,7 @@ export const ifrs16Content = {
     ],
 
     calculation: {
+         label: "Расчёт приведённой стоимости",
       formula:
         "1 000 000 / 1,10 + 1 000 000 / 1,10² + 1 000 000 / 1,10³",
 

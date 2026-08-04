@@ -188,50 +188,39 @@ const nextStandard =
               ))}
             </ul>
 
-            <div className="formula-box">
-              <span>
-  {content.practicalExample.calculation.label ??
-    "Основной расчёт"}
-</span>
-              <strong>{content.practicalExample.calculation.formula}</strong>
-            </div>
+       <div className="formula-box">
+  <span>
+    {content.practicalExample.calculation.label ??
+      "Основной расчёт"}
+  </span>
 
-           <div className="calculation-summary">
-  {(
-    <div className="calculation-summary">
-  {(content.practicalExample.calculation.summary ?? []).map(
-    (item) => (
-      <article key={item.label}>
-        <span>{item.label}</span>
-
-        <strong>
-          {item.format === "currency"
-            ? formatCurrency(
-                item.value,
-                content.practicalExample.currency,
-              )
-            : item.value}
-        </strong>
-      </article>
-    ),
-  )}
+  <strong>
+    {content.practicalExample.calculation.formula}
+  </strong>
 </div>
-  ).map((item) => (
-    <article key={item.label}>
-      <span>{item.label}</span>
 
-      <strong>
-        {item.format === "currency"
-          ? formatCurrency(
-              item.value,
-              content.practicalExample.currency,
-            )
-          : item.value}
-      </strong>
-    </article>
-  ))}
+<div className="calculation-summary">
+  {Array.isArray(
+    content.practicalExample.calculation.summary,
+  )
+    ? content.practicalExample.calculation.summary.map((item) => (
+        <article key={item.label}>
+          <span>{item.label}</span>
+
+          <strong>
+            {item.format === "currency"
+              ? formatCurrency(
+                  item.value,
+                  content.practicalExample.currency,
+                )
+              : item.value}
+          </strong>
+        </article>
+      ))
+    : null}
 </div>
-            <p>{content.practicalExample.calculation.explanation}</p>
+
+<p>{content.practicalExample.calculation.explanation}</p>
 
 <ScheduleTable
   schedule={content.practicalExample.schedule}

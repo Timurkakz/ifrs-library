@@ -39,7 +39,13 @@ function PageMeta() {
   useEffect(() => {
     let pageMeta = pagesMeta[pathname];
 
-if (pathname === "/ifrs/9") {
+if (pathname === "/ias/2") {
+  pageMeta = {
+    title: "IAS 2 «Запасы» — расчёты и проводки | IFRS Library",
+    description:
+      "Практическое руководство по IAS 2: себестоимость запасов, чистая возможная цена продажи, списание, восстановление и бухгалтерские проводки.",
+  };
+} else if (pathname === "/ifrs/9") {
   pageMeta = {
     title:
       "IFRS 9 «Финансовые инструменты» — ожидаемые кредитные убытки | IFRS Library",

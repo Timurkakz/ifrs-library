@@ -1610,3 +1610,71 @@
     font-size: 13px;
   }
 }
+
+/* Содержание страницы стандарта */
+
+.standard-toc {
+  margin: 24px 0 32px;
+  padding: 24px;
+
+  border: 1px solid #dbeafe;
+  border-radius: 16px;
+  background: #eff6ff;
+}
+
+.standard-toc h2 {
+  margin: 0 0 17px;
+  color: #172554;
+  font-size: 21px;
+}
+
+.standard-toc-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.standard-toc-links a {
+  padding: 9px 13px;
+  border: 1px solid #bfdbfe;
+  border-radius: 9px;
+
+  background: #ffffff;
+  color: #1d4ed8;
+
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    transform 0.2s;
+}
+
+.standard-toc-links a:hover {
+  border-color: #2563eb;
+  background: #dbeafe;
+  transform: translateY(-1px);
+}
+
+/* Отступ при переходе к разделу */
+
+.standard-details-page section[id],
+.standard-anchor-section {
+  scroll-margin-top: 105px;
+}
+
+@media (max-width: 600px) {
+  .standard-toc {
+    padding: 20px;
+  }
+
+  .standard-toc-links {
+    display: grid;
+  }
+
+  .standard-toc-links a {
+    text-align: center;
+  }
+}

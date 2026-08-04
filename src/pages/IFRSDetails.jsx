@@ -77,17 +77,26 @@ function IFRSDetails() {
         )}
       </header>
 
-      <nav
-        className="standard-section-nav"
-        aria-label="Разделы материала"
-      >
-        <a href="#overview">Обзор</a>
-        <a href="#application">Применение</a>
-        <a href="#examples">Пример</a>
-        <a href="#entries">Проводки</a>
-        <a href="#mistakes">Ошибки</a>
-        <a href="#sources">Источники</a>
-      </nav>
+
+     {content && (
+  <nav className="standard-toc" aria-label="Содержание стандарта">
+    <h2>Содержание</h2>
+
+    <div className="standard-toc-links">
+      <a href="#overview">Краткий обзор</a>
+      <a href="#scope">Область применения</a>
+      <a href="#steps">Порядок применения</a>
+      <a href="#example">Практический пример</a>
+      <a href="#entries">Бухгалтерские проводки</a>
+      <a href="#impact">Влияние на отчётность</a>
+      <a href="#mistakes">Типичные ошибки</a>
+      <a href="#checklist">Чек-лист</a>
+      <a href="#sources">Источники</a>
+    </div>
+  </nav>
+)}
+
+     
 
       {content ? (
         <div className="standard-content">
@@ -106,7 +115,7 @@ function IFRSDetails() {
             </ul>
           </section>
 
-          <section className="standard-content-section">
+          <section id="scope" className="standard-content-section">
             <p className="page-label">Область применения</p>
             <h2>{content.scope.title}</h2>
 
@@ -127,7 +136,7 @@ function IFRSDetails() {
             </div>
           </section>
 
-          <section id="application" className="standard-content-section">
+          <section id="steps" className="standard-content-section">
             <p className="page-label">Практика</p>
             <h2>Пошаговый алгоритм применения</h2>
 
@@ -145,7 +154,7 @@ function IFRSDetails() {
             </div>
           </section>
 
-          <section id="examples" className="standard-content-section">
+          <section id="example" className="standard-content-section">
             <p className="page-label">Расчёты и кейсы</p>
             <h2>{content.practicalExample.title}</h2>
 
@@ -228,8 +237,8 @@ function IFRSDetails() {
 />
           </section>
 
-          <section className="standard-content-section">
-            <p className="page-label">Финансовая отчётность</p>
+         <section id="impact" className="standard-content-section">
+  <p className="page-label">Финансовая отчётность</p>
             <h2>Влияние на отчётность</h2>
 
             <div className="information-grid">
@@ -255,9 +264,11 @@ function IFRSDetails() {
               ))}
             </ul>
 
-            <h3>Практический чек-лист</h3>
+           <div id="checklist" className="standard-anchor-section">
+  <h3>Практический чек-лист</h3>
 
-           <Checklist items={content.practicalChecklist} />
+  <Checklist items={content.practicalChecklist} />
+</div>
 </section>
 
           <section id="sources" className="standard-content-section">

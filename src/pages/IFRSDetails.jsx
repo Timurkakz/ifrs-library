@@ -60,9 +60,6 @@ function IFRSDetails() {
 />
 
 
-      <Link to="/ifrs" className="back-link">
-        ← Все стандарты МСФО
-      </Link>
 
       <header className="standard-details-header">
         <span className="standard-code">{standard.code}</span>

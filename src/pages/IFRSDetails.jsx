@@ -7,6 +7,7 @@ import ScheduleTable from "../components/standards/ScheduleTable.jsx";
 import SourcesList from "../components/standards/SourcesList.jsx";
 import { formatCurrency } from "../utils/formatCurrency.js";
 import { ifrsStandards } from "../data/ifrsStandards.js";
+import StandardActions from "../components/standards/StandardActions.jsx";
 import { ifrsContentById } from "../content/ifrs/index.js";
 
 
@@ -97,6 +98,7 @@ const nextStandard =
         )}
       </header>
 
+{content && <StandardActions />}
 
      {content && (
   <nav className="standard-toc" aria-label="Содержание стандарта">

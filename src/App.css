@@ -1842,3 +1842,85 @@
     align-items: flex-start;
   }
 }
+
+/* Действия со страницей стандарта */
+
+.standard-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 22px 0;
+}
+
+.standard-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 11px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: #334155;
+
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s,
+    background-color 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+
+.standard-actions button:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 520px) {
+  .standard-actions {
+    display: grid;
+  }
+
+  .standard-actions button {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media print {
+  .site-header,
+  .site-footer,
+  .breadcrumbs,
+  .standard-actions,
+  .standard-toc,
+  .standard-pagination {
+    display: none !important;
+  }
+
+  .standard-details-page {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .standard-content-section {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  body {
+    background: #ffffff;
+  }
+}

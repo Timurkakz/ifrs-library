@@ -10,6 +10,7 @@ import IAS from "./pages/IAS.jsx";
 import IFRIC from "./pages/IFRIC.jsx";
 import Laws from "./pages/Laws.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 import PageMeta from "./components/PageMeta.jsx";
 
 import "./App.css";
@@ -18,6 +19,7 @@ function App() {
   return (
     <div className="app">
       <PageMeta />
+       <ScrollToTop />
       <Header />
 
       <div className="main-content">

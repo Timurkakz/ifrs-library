@@ -40,6 +40,26 @@ function IFRSDetails() {
 
   const content = ifrsContentById[standard.id] ?? null;
 
+const readyStandards = ifrsStandards.filter((item) =>
+  Boolean(ifrsContentById[item.id])
+);
+
+const currentReadyIndex = readyStandards.findIndex(
+  (item) => item.id === standard.id
+);
+
+const previousStandard =
+  currentReadyIndex > 0
+    ? readyStandards[currentReadyIndex - 1]
+    : null;
+
+const nextStandard =
+  currentReadyIndex >= 0 &&
+  currentReadyIndex < readyStandards.length - 1
+    ? readyStandards[currentReadyIndex + 1]
+    : null;
+
+
   return (
     <main className="standard-details-page">
 
@@ -296,6 +316,41 @@ function IFRSDetails() {
           </section>
         </div>
       )}
+
+{content && (previousStandard || nextStandard) && (
+  <nav
+    className="standard-pagination"
+    aria-label="Навигация между готовыми руководствами"
+  >
+    <div>
+      {previousStandard && (
+        <Link
+          to={`/ifrs/${previousStandard.id}`}
+          className="standard-pagination-link standard-pagination-previous"
+        >
+          <span>← Предыдущее руководство</span>
+          <strong>{previousStandard.code}</strong>
+          <small>{previousStandard.title}</small>
+        </Link>
+      )}
+    </div>
+
+    <div>
+      {nextStandard && (
+        <Link
+          to={`/ifrs/${nextStandard.id}`}
+          className="standard-pagination-link standard-pagination-next"
+        >
+          <span>Следующее руководство →</span>
+          <strong>{nextStandard.code}</strong>
+          <small>{nextStandard.title}</small>
+        </Link>
+      )}
+    </div>
+  </nav>
+)}
+
+
     </main>
   );
 }

@@ -1,6 +1,9 @@
 import { ifrsContentById } from "../content/ifrs/index.js";
 import { ifrsStandards } from "../data/ifrsStandards.js";
 
+import { iasContentById } from "../content/ias/index.js";
+import { iasStandards } from "../data/iasStandards.js";
+
 
 import { Link } from "react-router";
 import {
@@ -40,9 +43,23 @@ function Card({ icon, title, text, to, status }) {
 
 function Home() {
 
-    const readyStandards = ifrsStandards
-  .filter((standard) => Boolean(ifrsContentById[standard.id]))
-  .sort((first, second) => first.id - second.id);
+   const readyGuides = [
+  ...ifrsStandards
+    .filter((standard) => Boolean(ifrsContentById[standard.id]))
+    .map((standard) => ({
+      ...standard,
+      section: "IFRS",
+      path: `/ifrs/${standard.id}`,
+    })),
+
+  ...iasStandards
+    .filter((standard) => Boolean(iasContentById[standard.id]))
+    .map((standard) => ({
+      ...standard,
+      section: "IAS",
+      path: `/ias/${standard.id}`,
+    })),
+];
 
   return (
     <main>
@@ -128,13 +145,13 @@ function Home() {
         </div>
 
         <div className="ready-guides-grid">
-          {readyStandards.map((standard) => (
+          {readyGuides.map((standard) => (
             <Link
-              key={standard.id}
-              to={`/ifrs/${standard.id}`}
-              className="ready-guide-card"
-            >
-              <div className="ready-guide-card-top">
+  key={`${standard.section}-${standard.id}`}
+  to={standard.path}
+  className="ready-guide-card"
+>
+                  <div className="ready-guide-card-top">
                 <span className="standard-code">{standard.code}</span>
                 <span className="ready-guide-status">Готово</span>
               </div>

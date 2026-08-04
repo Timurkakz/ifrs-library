@@ -12,6 +12,7 @@ import Laws from "./pages/Laws.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import PageMeta from "./components/PageMeta.jsx";
+import IASDetails from "./pages/IASDetails.jsx";
 
 import "./App.css";
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/ifrs" element={<IFRS />} />
           <Route path="/ifrs/:standardId" element={<IFRSDetails />} />
           <Route path="/ias" element={<IAS />} />
+          <Route path="/ias/:standardId" element={<IASDetails />} />
           <Route path="/ifric" element={<IFRIC />} />
           <Route path="/laws" element={<Laws />} />
           <Route path="*" element={<NotFound />} />

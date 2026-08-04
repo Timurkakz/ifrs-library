@@ -1924,3 +1924,149 @@
     background: #ffffff;
   }
 }
+
+/* Готовые руководства на главной странице */
+
+.ready-guides-section {
+  width: calc(100% - 40px);
+  max-width: 1200px;
+  margin: 75px auto;
+  padding: 42px;
+
+  border: 1px solid #dbeafe;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
+}
+
+.ready-guides-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.ready-guides-heading h2 {
+  margin: 5px 0 12px;
+  color: #172554;
+  font-size: 32px;
+}
+
+.ready-guides-heading p {
+  max-width: 720px;
+  margin-bottom: 0;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+.ready-guides-all-link {
+  flex-shrink: 0;
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.ready-guides-all-link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.ready-guides-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.ready-guide-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  padding: 24px;
+
+  border: 1px solid #dbeafe;
+  border-radius: 16px;
+  background: #ffffff;
+  color: inherit;
+  text-decoration: none;
+
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.2s;
+}
+
+.ready-guide-card:hover {
+  border-color: #60a5fa;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.09);
+  transform: translateY(-4px);
+}
+
+.ready-guide-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.ready-guide-card-top .standard-code {
+  margin: 0;
+}
+
+.ready-guide-status {
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #166534;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ready-guide-card h3 {
+  margin: 0 0 12px;
+  color: #1e293b;
+  font-size: 21px;
+  line-height: 1.35;
+}
+
+.ready-guide-card p {
+  margin: 0 0 22px;
+  color: #64748b;
+  line-height: 1.65;
+}
+
+.ready-guide-action {
+  margin-top: auto;
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .ready-guides-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .ready-guides-section {
+    width: calc(100% - 30px);
+    margin: 45px auto;
+    padding: 28px 20px;
+  }
+
+  .ready-guides-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .ready-guides-heading h2 {
+    font-size: 27px;
+  }
+
+  .ready-guides-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,3 +1,7 @@
+import { ifrsContentById } from "../content/ifrs/index.js";
+import { ifrsStandards } from "../data/ifrsStandards.js";
+
+
 import { Link } from "react-router";
 import {
   FaBalanceScale,
@@ -35,6 +39,11 @@ function Card({ icon, title, text, to, status }) {
 }
 
 function Home() {
+
+    const readyStandards = ifrsStandards
+  .filter((standard) => Boolean(ifrsContentById[standard.id]))
+  .sort((first, second) => first.id - second.id);
+
   return (
     <main>
       <section className="hero">
@@ -94,6 +103,53 @@ function Home() {
           status="В разработке"
         />
       </section>
+
+   <section
+        className="ready-guides-section"
+        aria-labelledby="ready-guides-title"
+      >
+        <div className="ready-guides-heading">
+          <div>
+            <p className="page-label">Практические материалы</p>
+
+            <h2 id="ready-guides-title">
+              Готовые руководства по МСФО
+            </h2>
+
+            <p>
+              Руководства с объяснениями, расчётами, бухгалтерскими
+              проводками, типичными ошибками и источниками.
+            </p>
+          </div>
+
+          <Link to="/ifrs" className="ready-guides-all-link">
+            Смотреть все стандарты →
+          </Link>
+        </div>
+
+        <div className="ready-guides-grid">
+          {readyStandards.map((standard) => (
+            <Link
+              key={standard.id}
+              to={`/ifrs/${standard.id}`}
+              className="ready-guide-card"
+            >
+              <div className="ready-guide-card-top">
+                <span className="standard-code">{standard.code}</span>
+                <span className="ready-guide-status">Готово</span>
+              </div>
+
+              <h3>{standard.title}</h3>
+              <p>{standard.description}</p>
+
+              <span className="ready-guide-action">
+                Открыть руководство →
+              </span>
+            </Link>
+          ))}
+        </div>
+           </section>
+      
     </main>
   );
 }

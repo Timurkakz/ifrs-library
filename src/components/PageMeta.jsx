@@ -1,6 +1,12 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 
+import { ifrsStandards } from "../data/ifrsStandards.js";
+import { iasStandards } from "../data/iasStandards.js";
+
+import { ifrsContentById } from "../content/ifrs/index.js";
+import { iasContentById } from "../content/ias/index.js";
+
 const pagesMeta = {
   "/": {
     title: "IFRS Library — практическая библиотека МСФО",
@@ -9,15 +15,17 @@ const pagesMeta = {
   },
 
   "/ifrs": {
-    title: "МСФО (IFRS) — стандарты и руководства | IFRS Library",
+    title:
+      "МСФО (IFRS) — стандарты и руководства | IFRS Library",
     description:
       "Каталог международных стандартов финансовой отчётности IFRS с практическими руководствами.",
   },
 
   "/ias": {
-    title: "МСБУ (IAS) | IFRS Library",
+    title:
+      "МСБУ (IAS) — стандарты и руководства | IFRS Library",
     description:
-      "Раздел международных стандартов бухгалтерского учёта IAS.",
+      "Каталог международных стандартов бухгалтерского учёта IAS с практическими руководствами.",
   },
 
   "/ifric": {
@@ -33,59 +41,65 @@ const pagesMeta = {
   },
 };
 
+const standardsSections = {
+  ifrs: {
+    standards: ifrsStandards,
+    contentById: ifrsContentById,
+  },
+
+  ias: {
+    standards: iasStandards,
+    contentById: iasContentById,
+  },
+};
+
+function getStandardMeta(pathname) {
+  const pathParts = pathname.split("/").filter(Boolean);
+
+  if (pathParts.length !== 2) {
+    return null;
+  }
+
+  const [sectionName, standardId] = pathParts;
+
+  const section = standardsSections[sectionName];
+
+  if (!section) {
+    return null;
+  }
+
+  const standard = section.standards.find(
+    (item) => String(item.id) === standardId,
+  );
+
+  if (!standard) {
+    return null;
+  }
+
+  const hasPracticalGuide = Boolean(
+    section.contentById[standard.id],
+  );
+
+  return {
+    title: `${standard.code} «${standard.title}» | IFRS Library`,
+
+    description: hasPracticalGuide
+      ? `Практическое руководство по ${standard.code} «${standard.title}»: объяснения, примеры, расчёты и бухгалтерские проводки.`
+      : `${standard.code} «${standard.title}»: описание стандарта и материалы по его применению.`,
+  };
+}
+
 function PageMeta() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    let pageMeta = pagesMeta[pathname];
-
-if (pathname === "/ias/2") {
-  pageMeta = {
-    title: "IAS 2 «Запасы» — расчёты и проводки | IFRS Library",
-    description:
-      "Практическое руководство по IAS 2: себестоимость запасов, чистая возможная цена продажи, списание, восстановление и бухгалтерские проводки.",
-  };
-} else if (pathname === "/ifrs/9") {
-  pageMeta = {
-    title:
-      "IFRS 9 «Финансовые инструменты» — ожидаемые кредитные убытки | IFRS Library",
-    description:
-      "Практическое руководство по IFRS 9: классификация финансовых инструментов, ожидаемые кредитные убытки, матрица резервирования и проводки.",
-  };
-} else if (pathname === "/ifrs/15") {
-
-
-} else if (pathname === "/ifrs/15") {
-  pageMeta = {
-    title:
-      "IFRS 15 «Выручка по договорам с покупателями» | IFRS Library",
-    description:
-      "Практическое руководство по IFRS 15: пятиэтапная модель, распределение цены сделки, признание выручки и бухгалтерские проводки.",
-  };
-} else if (pathname === "/ifrs/16") {
-
-
-      pageMeta = {
-        title: "IFRS 16 «Аренда» — расчёты и проводки | IFRS Library",
-        description:
-          "Практическое руководство по IFRS 16: признание аренды, расчёт обязательства, график платежей и бухгалтерские проводки.",
-      };
-    } else if (pathname.startsWith("/ifrs/")) {
-      const standardId = pathname.split("/").filter(Boolean)[1];
-
-      pageMeta = {
-        title: `IFRS ${standardId} | IFRS Library`,
-        description: `Практический материал по международному стандарту финансовой отчётности IFRS ${standardId}.`,
-      };
-    }
-
-    if (!pageMeta) {
-      pageMeta = {
+    const pageMeta =
+      pagesMeta[pathname] ??
+      getStandardMeta(pathname) ?? {
         title: "Страница не найдена | IFRS Library",
         description:
           "Запрашиваемая страница не найдена в библиотеке IFRS Library.",
       };
-    }
 
     document.title = pageMeta.title;
 
@@ -99,7 +113,10 @@ if (pathname === "/ias/2") {
       document.head.appendChild(descriptionTag);
     }
 
-    descriptionTag.setAttribute("content", pageMeta.description);
+    descriptionTag.setAttribute(
+      "content",
+      pageMeta.description,
+    );
   }, [pathname]);
 
   return null;

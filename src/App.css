@@ -1740,3 +1740,24 @@
     text-align: center;
   }
 }
+
+.reset-filters-button {
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.reset-filters-button:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1d4ed8;
+}

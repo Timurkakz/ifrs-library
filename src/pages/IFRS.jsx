@@ -68,6 +68,21 @@ function IFRS() {
   <p className="search-result-count">
     Найдено стандартов: {filteredStandards.length}
   </p>
+  
+ {(searchQuery || showReadyOnly) && (
+    <button
+      type="button"
+      className="reset-filters-button"
+      onClick={() => {
+        setSearchQuery("");
+        setShowReadyOnly(false);
+      }}
+    >
+      Сбросить фильтры
+    </button>
+  )}
+
+
 </div>
 
       </section>

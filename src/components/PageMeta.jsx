@@ -39,7 +39,17 @@ function PageMeta() {
   useEffect(() => {
     let pageMeta = pagesMeta[pathname];
 
-if (pathname === "/ifrs/15") {
+if (pathname === "/ifrs/9") {
+  pageMeta = {
+    title:
+      "IFRS 9 «Финансовые инструменты» — ожидаемые кредитные убытки | IFRS Library",
+    description:
+      "Практическое руководство по IFRS 9: классификация финансовых инструментов, ожидаемые кредитные убытки, матрица резервирования и проводки.",
+  };
+} else if (pathname === "/ifrs/15") {
+
+
+} else if (pathname === "/ifrs/15") {
   pageMeta = {
     title:
       "IFRS 15 «Выручка по договорам с покупателями» | IFRS Library",

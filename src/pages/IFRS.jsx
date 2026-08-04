@@ -8,17 +8,23 @@ import { ifrsStandards } from "../data/ifrsStandards.js";
 function IFRS() {
   const [searchQuery, setSearchQuery] = useState("");
 
+  const [showReadyOnly, setShowReadyOnly] = useState(false);
+
   const normalizedQuery = searchQuery.trim().toLowerCase();
 
-  const filteredStandards = ifrsStandards.filter((standard) => {
-    const searchableText = `
-      ${standard.code}
-      ${standard.title}
-      ${standard.description}
-    `.toLowerCase();
+ const filteredStandards = ifrsStandards.filter((standard) => {
+  const searchableText = `
+    ${standard.code}
+    ${standard.title}
+    ${standard.description}
+  `.toLowerCase();
 
-    return searchableText.includes(normalizedQuery);
-  });
+  const matchesSearch = searchableText.includes(normalizedQuery);
+  const hasGuide = Boolean(ifrsContentById[standard.id]);
+  const matchesStatus = !showReadyOnly || hasGuide;
+
+  return matchesSearch && matchesStatus;
+});
 
   return (
     <main className="standards-page">
@@ -48,9 +54,22 @@ function IFRS() {
           />
         </div>
 
-        <p className="search-result-count">
-          Найдено стандартов: {filteredStandards.length}
-        </p>
+        <div className="ifrs-filter-row">
+  <label className="ready-filter">
+    <input
+      type="checkbox"
+      checked={showReadyOnly}
+      onChange={(event) => setShowReadyOnly(event.target.checked)}
+    />
+
+    <span>Показывать только готовые руководства</span>
+  </label>
+
+  <p className="search-result-count">
+    Найдено стандартов: {filteredStandards.length}
+  </p>
+</div>
+
       </section>
 
       {filteredStandards.length > 0 ? (

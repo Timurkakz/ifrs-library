@@ -3,6 +3,7 @@ import { ifrs4Content } from "./ifrs4.js";
 import { ifrs9Content } from "./ifrs9.js";
 import { ifrs10Content } from "./ifrs10.js";
 import { ifrs11Content } from "./ifrs11.js";
+import { ifrs12Content } from "./ifrs12.js";
 import { ifrs13Content } from "./ifrs13.js";
 import { ifrs15Content } from "./ifrs15.js";
 import { ifrs16Content } from "./ifrs16.js";
@@ -15,6 +16,7 @@ export const ifrsContentById = {
     9: ifrs9Content,
       10: ifrs10Content,
       11: ifrs11Content,
+      12: ifrs12Content,
     13: ifrs13Content,
   15: ifrs15Content,
   16: ifrs16Content,

@@ -12,6 +12,7 @@ import { ias24Content } from "./ias24.js";
 import { ias36Content } from "./ias36.js";
 import { ias37Content } from "./ias37.js";
 import { ias38Content } from "./ias38.js";
+import { ias39Content } from "./ias39.js";
 import { ias40Content } from "./ias40.js";
 import { ias41Content } from "./ias41.js";
 
@@ -31,6 +32,7 @@ export const iasContentById = {
   36: ias36Content,
   37: ias37Content,
   38: ias38Content,
+  39: ias39Content,
   40: ias40Content,
   41: ias41Content,
 };

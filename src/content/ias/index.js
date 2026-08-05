@@ -1,3 +1,4 @@
+import { ias1Content } from "./ias1.js";
 import { ias2Content } from "./ias2.js";
 import { ias7Content } from "./ias7.js";
 import { ias8Content } from "./ias8.js";
@@ -18,7 +19,8 @@ import { ias41Content } from "./ias41.js";
 
 
 export const iasContentById = {
-  2: ias2Content,
+ 1: ias1Content,
+    2: ias2Content,
   7: ias7Content,
   8: ias8Content,
   10: ias10Content,

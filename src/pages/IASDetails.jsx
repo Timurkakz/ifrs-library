@@ -98,6 +98,31 @@ const nextStandard =
         )}
       </header>
 
+
+      {content?.replacedBy && (
+  <section
+    className="replacement-notice"
+    aria-label="Информация о замене стандарта"
+  >
+    <div>
+      <span className="replacement-notice-label">
+        {content.replacedBy.label ?? "Изменение стандарта"}
+      </span>
+
+      <h2>{content.replacedBy.title}</h2>
+
+      <p>{content.replacedBy.description}</p>
+    </div>
+
+    <Link
+      to={content.replacedBy.path}
+      className="replacement-notice-link"
+    >
+      Перейти к {content.replacedBy.code} →
+    </Link>
+  </section>
+)}
+
 {content && <StandardActions />}
 
      {content && (

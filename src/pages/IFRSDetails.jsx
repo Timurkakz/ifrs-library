@@ -12,8 +12,29 @@ import { ifrsContentById } from "../content/ifrs/index.js";
 
 
 
-function IFRSDetails() {
-  const { standardId } = useParams();
+function IFRSDetails({
+  basePath = "/ifrs",
+  catalogPath = "/ifrs",
+  homePath = "/",
+}) {
+      const { standardId } = useParams();
+
+
+      const resolveInternalPath = (path) => {
+  if (!path) {
+    return path;
+  }
+
+  if (
+    basePath.startsWith("/book") &&
+    path.startsWith("/") &&
+    !path.startsWith("/book")
+  ) {
+    return `/book${path}`;
+  }
+
+  return path;
+};
 
   const standard = ifrsStandards.find(
     (item) => String(item.id) === standardId
@@ -31,7 +52,7 @@ function IFRSDetails() {
             Возможно, адрес указан неправильно или материал ещё не добавлен.
           </p>
 
-          <Link to="/ifrs" className="back-link">
+          <Link to={catalogPath} className="back-link">
             Вернуться к списку МСФО
           </Link>
         </section>
@@ -67,16 +88,17 @@ const nextStandard =
 <Breadcrumbs
   items={[
     {
-      label: "Главная",
-      to: "/",
-    },
-    {
-      label: "МСФО",
-      to: "/ifrs",
-    },
-    {
-      label: standard.code,
-    },
+  label: "Главная",
+  to: homePath,
+},
+{
+  label: "МСФО",
+  to: catalogPath,
+},
+
+
+
+
   ]}
 />
 
@@ -105,16 +127,15 @@ const nextStandard =
   >
     <div>
       <span className="replacement-notice-label">
-        Архивный стандарт
-      </span>
-
+  {content.replacedBy.label ?? "Архивный стандарт"}
+</span>
       <h2>{content.replacedBy.title}</h2>
 
       <p>{content.replacedBy.description}</p>
     </div>
 
     <Link
-      to={content.replacedBy.path}
+      to={resolveInternalPath(content.replacedBy.path)}
       className="replacement-notice-link"
     >
       Перейти к {content.replacedBy.code} →
@@ -352,7 +373,7 @@ const nextStandard =
     <div>
       {previousStandard && (
         <Link
-          to={`/ifrs/${previousStandard.id}`}
+         to={`${basePath}/${previousStandard.id}`}
           className="standard-pagination-link standard-pagination-previous"
         >
           <span>← Предыдущее руководство</span>
@@ -365,7 +386,7 @@ const nextStandard =
     <div>
       {nextStandard && (
         <Link
-          to={`/ifrs/${nextStandard.id}`}
+          to={`${basePath}/${nextStandard.id}`}
           className="standard-pagination-link standard-pagination-next"
         >
           <span>Следующее руководство →</span>

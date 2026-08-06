@@ -12,8 +12,28 @@ import { iasContentById } from "../content/ias/index.js";
 
 
 
-function IASDetails() {
+function IASDetails({
+  basePath = "/ias",
+  catalogPath = "/ias",
+  homePath = "/",
+}) {
   const { standardId } = useParams();
+
+  const resolveInternalPath = (path) => {
+  if (!path) {
+    return path;
+  }
+
+  if (
+    basePath.startsWith("/book") &&
+    path.startsWith("/") &&
+    !path.startsWith("/book")
+  ) {
+    return `/book${path}`;
+  }
+
+  return path;
+};
 
   const standard = iasStandards.find(
     (item) => String(item.id) === standardId
@@ -31,7 +51,7 @@ function IASDetails() {
             Возможно, адрес указан неправильно или материал ещё не добавлен.
           </p>
 
-          <Link to="/ias" className="back-link">
+          <Link to={catalogPath} className="back-link">
             Вернуться к списку МСБУ
           </Link>
         </section>
@@ -67,13 +87,13 @@ const nextStandard =
 <Breadcrumbs
   items={[
     {
-      label: "Главная",
-      to: "/",
-    },
-    {
-      label: "МСБУ",
-      to: "/ias",
-    },
+  label: "Главная",
+  to: homePath,
+},
+{
+  label: "МСБУ",
+  to: catalogPath,
+},
     {
       label: standard.code,
     },
@@ -115,7 +135,7 @@ const nextStandard =
     </div>
 
     <Link
-      to={content.replacedBy.path}
+      to={resolveInternalPath(content.replacedBy.path)}
       className="replacement-notice-link"
     >
       Перейти к {content.replacedBy.code} →
@@ -336,7 +356,7 @@ const nextStandard =
     <div>
       {previousStandard && (
         <Link
-          to={`/ias/${previousStandard.id}`}
+          to={`${basePath}/${previousStandard.id}`}
           className="standard-pagination-link standard-pagination-previous"
         >
           <span>← Предыдущее руководство</span>
@@ -349,7 +369,7 @@ const nextStandard =
     <div>
       {nextStandard && (
         <Link
-          to={`/ias/${nextStandard.id}`}
+        to={`${basePath}/${nextStandard.id}`}
           className="standard-pagination-link standard-pagination-next"
         >
           <span>Следующее руководство →</span>
